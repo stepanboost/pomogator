@@ -30,6 +30,9 @@ NODE_ENV=production
 1. Перейдите в "Settings" → "Build"
 2. Установите "Dockerfile Path" на `Dockerfile.simple`
 
+Если и простой не работает:
+1. Установите "Dockerfile Path" на `Dockerfile.ultra-simple`
+
 ### 4. Ожидание деплоя
 - Railway автоматически соберет Docker образ
 - Процесс займет 5-10 минут
