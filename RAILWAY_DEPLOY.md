@@ -19,11 +19,16 @@ NEXT_PUBLIC_TELEGRAM_BOT_TOKEN=ваш_telegram_bot_токен
 NODE_ENV=production
 ```
 
-### 3. Получение URL
+### 3. Настройка Dockerfile (если нужно)
+Если основной Dockerfile не работает, в настройках Railway:
+1. Перейдите в "Settings" → "Build"
+2. Установите "Dockerfile Path" на `Dockerfile.simple`
+
+### 4. Получение URL
 После деплоя Railway предоставит URL вида:
 `https://your-app-name.railway.app`
 
-### 4. Настройка Telegram Bot
+### 5. Настройка Telegram Bot
 1. Перейдите в [@BotFather](https://t.me/botfather)
 2. Выберите вашего бота
 3. Нажмите "Bot Settings" → "Menu Button"
