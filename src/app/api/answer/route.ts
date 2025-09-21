@@ -56,10 +56,6 @@ const SYSTEM_PROMPT = `Ты — умный помощник, который ре
 - Если нужно, давай альтернативные способы решения
 - НЕ ЗАВЕРШАЙ решение преждевременно - доводи до конца!`;
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 export async function POST(request: NextRequest) {
   console.log('🚀 API /answer called');
 
@@ -70,6 +66,11 @@ export async function POST(request: NextRequest) {
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
+
+  // Инициализируем OpenAI только после проверки API ключа
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
 
   try {
     const body = await request.json();
