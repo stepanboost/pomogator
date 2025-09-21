@@ -16,8 +16,8 @@ interface ChatBubbleProps {
 // Функция для нормализации LaTeX (преобразование \(...\) и \[...\] в $...$ и $$...$$)
 function normalizeLatex(s: string) {
   return s
-    .replace(/\\\[(.*?)\\\]/gs, (_m, g1) => `$$${g1}$$`)
-    .replace(/\\\((.*?)\\\)/gs, (_m, g1) => `$${g1}$`);
+    .replace(/\\\[([\s\S]*?)\\\]/g, (_m, g1) => `$$${g1}$$`)
+    .replace(/\\\(([\s\S]*?)\\\)/g, (_m, g1) => `$${g1}$`);
 }
 
 // Компонент для рендера сообщения с поддержкой LaTeX
@@ -30,10 +30,11 @@ function Markdown({ text }: { text: string }) {
         [rehypeKatex, { strict: false, trust: true }] // не ругается на \text, \dfrac и т.п.
       ]}
       components={{
-        code({ inline, className, children, ...props }) {
+        code({ className, children, ...props }: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
           // обычные code-блоки подсвечиваем, но LaTeX туда не кладём
           const code = String(children ?? "");
-          if (!inline) {
+          const isInline = !className?.includes('language-');
+          if (!isInline) {
             const lang = /language-(\w+)/.exec(className || "")?.[1];
             const html = lang
               ? hljs.highlight(code, { language: lang }).value

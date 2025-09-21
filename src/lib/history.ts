@@ -24,10 +24,10 @@ export function getHistory(): HistoryItem[] {
     
     const history = JSON.parse(stored);
     // Конвертируем timestamp обратно в Date объекты
-    return history.map((item: any) => ({
+    return history.map((item: any) => ({ // eslint-disable-line @typescript-eslint/no-explicit-any
       ...item,
       timestamp: new Date(item.timestamp),
-      messages: item.messages.map((msg: any) => ({
+      messages: item.messages.map((msg: any) => ({ // eslint-disable-line @typescript-eslint/no-explicit-any
         ...msg,
         timestamp: new Date(msg.timestamp)
       }))

@@ -121,7 +121,7 @@ export async function POST(request: NextRequest) {
     
     // Увеличиваем лимиты токенов для более полных решений
     const maxTokens = isVeryComplex ? 16000 : 12000;
-    let chatMessages: any[] = [];
+    let chatMessages: any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
 
     if (messages && Array.isArray(messages)) {
       // Новый формат с историей сообщений
