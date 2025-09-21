@@ -3,25 +3,45 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "@telegram-apps/sdk": "^3.11.5",
+    "@tma.js/sdk": "^2.7.0",
+    "@types/katex": "^0.16.7",
+    "@types/multer": "^2.0.0",
+    "highlight.js": "^11.11.1",
+    "katex": "^0.16.22",
+    "multer": "^2.0.2",
+    "next": "15.5.3",
+    "openai": "^5.22.0",
+    "pdf-parse": "^1.1.1",
+    "prisma": "^6.16.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.3"
+    "react-katex": "^3.1.0",
+    "react-markdown": "^10.1.0",
+    "rehype-katex": "^7.0.1",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-html": "^16.0.1",
+    "remark-math": "^6.0.0",
+    "sharp": "^0.34.4"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pdf-parse": "^1.1.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
