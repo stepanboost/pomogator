@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@prisma/client": "^6.16.2",
+    "@tailwindcss/postcss": "^4.1.13",
     "@telegram-apps/sdk": "^3.11.5",
     "@tma.js/sdk": "^2.7.0",
     "@types/katex": "^0.16.7",
@@ -34,7 +35,6 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4.1.13",
     "@types/node": "^20",
     "@types/pdf-parse": "^1.1.5",
     "@types/react": "^19",
