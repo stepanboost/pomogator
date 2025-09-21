@@ -14,8 +14,8 @@
 
 ```
 OPENAI_API_KEY=your_openai_api_key_here
-TELEGRAM_BOT_TOKEN=7658944154:AAGpuLuBpxj0JJrcz2x32_tLpcvuFhyvblE
-NEXT_PUBLIC_TELEGRAM_BOT_TOKEN=7658944154:AAGpuLuBpxj0JJrcz2x32_tLpcvuFhyvblE
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token_here
+NEXT_PUBLIC_TELEGRAM_BOT_TOKEN=your_telegram_bot_token_here
 NODE_ENV=production
 ```
 
