@@ -63,6 +63,14 @@ const openai = new OpenAI({
 export async function POST(request: NextRequest) {
   console.log('🚀 API /answer called');
 
+  // Проверяем наличие API ключа
+  if (!process.env.OPENAI_API_KEY) {
+    return new Response(
+      JSON.stringify({ error: 'OpenAI API key not configured' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+
   try {
     const body = await request.json();
     const { message, image, type, messages, system } = body;
