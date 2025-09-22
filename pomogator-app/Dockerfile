@@ -1,0 +1,28 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apk add --no-cache libc6-compat
+
+# Copy package files
+COPY package.json package-lock.json ./
+
+# Install all dependencies (including dev for build)
+RUN npm install
+
+# Copy source code
+COPY . .
+
+# Build the application
+ENV NEXT_TELEMETRY_DISABLED 1
+RUN npm run build
+
+# Remove dev dependencies after build
+RUN npm install --omit=dev && npm cache clean --force
+
+# Expose port
+EXPOSE 3000
+
+# Start the application
+CMD ["npm", "start"]

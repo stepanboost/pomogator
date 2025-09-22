@@ -1,0 +1,32 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install pnpm
+RUN npm install -g pnpm
+
+# Copy package files
+COPY package.json pnpm-workspace.yaml ./
+COPY packages/prisma/package.json ./packages/prisma/
+COPY packages/shared/package.json ./packages/shared/
+COPY packages/redis/package.json ./packages/redis/
+COPY apps/api/package.json ./apps/api/
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile
+
+# Copy source code
+COPY packages/prisma ./packages/prisma
+COPY packages/shared ./packages/shared
+COPY packages/redis ./packages/redis
+COPY apps/api ./apps/api
+
+# Build
+RUN pnpm --filter @pomogator/shared build
+RUN pnpm --filter @pomogator/redis build
+RUN pnpm --filter @pomogator/prisma generate
+RUN pnpm --filter @pomogator/api build
+
+EXPOSE 3001
+
+CMD ["node", "apps/api/dist/index.js"]

@@ -1,0 +1,26 @@
+{
+  "name": "pomogator-monorepo",
+  "version": "1.0.0",
+  "description": "Telegram bot for Pomogator Mini App with subscription funnel",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter @pomogator/api dev\" \"pnpm --filter @pomogator/bot dev\"",
+    "build": "pnpm --filter @pomogator/shared build && pnpm --filter @pomogator/prisma generate && pnpm --filter @pomogator/api build && pnpm --filter @pomogator/bot build",
+    "start": "concurrently \"pnpm --filter @pomogator/api start\" \"pnpm --filter @pomogator/bot start\"",
+    "db:migrate": "pnpm --filter @pomogator/prisma migrate dev",
+    "db:generate": "pnpm --filter @pomogator/prisma generate",
+    "db:studio": "pnpm --filter @pomogator/prisma studio",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.6"
+  }
+}
