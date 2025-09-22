@@ -7,9 +7,9 @@ import { tutorialScene } from './scenes/tutorialScene'
 // Load environment variables
 dotenv.config()
 
-const BOT_TOKEN = process.env.BOT_TOKEN
-const WEBAPP_URL = process.env.WEBAPP_URL || 'http://localhost:3000'
-const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:3001'
+const BOT_TOKEN = process.env.BOT_TOKEN || '7658944154:AAGpuLuBpxj0JJrcz2x32_tLpcvuFhyvblE'
+const WEBAPP_URL = process.env.WEBAPP_URL || 'https://pomogator-production.up.railway.app'
+const API_BASE_URL = process.env.API_BASE_URL || 'https://pomogator-production.up.railway.app'
 
 // Проверяем наличие обязательных переменных
 if (!BOT_TOKEN) {

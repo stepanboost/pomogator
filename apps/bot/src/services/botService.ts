@@ -36,10 +36,13 @@ export class BotService {
     firstName?: string
   }): Promise<User | null> {
     try {
-      const response = await axios.post(`${this.apiBaseUrl}/users`, userData)
+      // Пытаемся подключиться к API
+      const response = await axios.post(`${this.apiBaseUrl}/users`, userData, {
+        timeout: 5000
+      })
       return response.data
     } catch (error) {
-      console.error('Find or create user error:', error)
+      console.warn('API недоступен, используем mock данные:', error.message)
       // Fallback to mock user if API is not available
       return {
         id: `user_${userData.tgId}`,
@@ -52,10 +55,12 @@ export class BotService {
 
   async checkUserAccess(userId: string): Promise<Access> {
     try {
-      const response = await axios.get(`${this.apiBaseUrl}/users/${userId}/access`)
+      const response = await axios.get(`${this.apiBaseUrl}/users/${userId}/access`, {
+        timeout: 5000
+      })
       return response.data
     } catch (error) {
-      console.error('Check user access error:', error)
+      console.warn('API недоступен, используем mock доступ:', error.message)
       // Fallback to mock access if API is not available
       return { 
         hasAccess: true, 

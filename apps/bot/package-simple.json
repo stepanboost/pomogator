@@ -1,21 +1,30 @@
 {
-  "name": "pomogator-bot",
+  "name": "@pomogator/bot",
   "version": "1.0.0",
-  "description": "Telegram Bot for Pomogator",
+  "description": "Telegram bot for Pomogator Mini App",
   "main": "dist/index.js",
   "scripts": {
-    "build": "echo 'Building Bot...' && npm install && echo 'Build complete'",
-    "start": "node dist/index.js"
+    "dev": "tsx watch src/index.ts",
+    "dev:simple": "tsx watch src/index.simple.ts",
+    "dev:test": "tsx watch src/index.test.ts",
+    "build": "tsc",
+    "build:simple": "tsc src/index.simple.ts --outDir dist",
+    "build:test": "tsc src/index.test.ts --outDir dist",
+    "start": "node dist/index.js",
+    "start:simple": "node dist/index.simple.js",
+    "start:test": "node dist/index.test.js"
   },
   "dependencies": {
     "telegraf": "^4.15.6",
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
     "node-cron": "^3.0.3",
-    "@prisma/client": "^6.16.2",
-    "prisma": "^6.16.2"
+    "jsonwebtoken": "^9.0.2"
   },
-  "engines": {
-    "node": ">=18.0.0"
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "@types/jsonwebtoken": "^9.0.5",
+    "typescript": "^5.3.3",
+    "tsx": "^4.6.2"
   }
 }

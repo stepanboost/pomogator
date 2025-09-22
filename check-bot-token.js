@@ -1,7 +1,7 @@
 const https = require('https');
 
 // Замени на свой токен
-const BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
+const BOT_TOKEN = '7658944154:AAGpuLuBpxj0JJrcz2x32_tLpcvuFhyvblE';
 
 if (BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE') {
   console.log('❌ Замени YOUR_BOT_TOKEN_HERE на свой токен!');
