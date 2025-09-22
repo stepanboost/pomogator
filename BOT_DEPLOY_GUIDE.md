@@ -24,7 +24,7 @@
 ```bash
 # Основные настройки
 NODE_ENV=production
-BOT_TOKEN=твой_токен_от_BotFather
+BOT_TOKEN=7658944154:AAGpuLuBpxj0JJrcz2x32_tLpcvuFhyvblE
 
 # URL'ы твоих сервисов (замени на реальные)
 API_BASE_URL=https://твой-api-url.railway.app

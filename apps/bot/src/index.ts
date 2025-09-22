@@ -7,9 +7,15 @@ import { tutorialScene } from './scenes/tutorialScene'
 // Load environment variables
 dotenv.config()
 
-const BOT_TOKEN = process.env.BOT_TOKEN || '7658944154:AAGpuLuBpxj0JJrcz2x32_tLpcvuFhyvblE'
+const BOT_TOKEN = process.env.BOT_TOKEN
 const WEBAPP_URL = process.env.WEBAPP_URL || 'http://localhost:3000'
 const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:3001'
+
+// Проверяем наличие обязательных переменных
+if (!BOT_TOKEN) {
+  console.error('❌ BOT_TOKEN не найден в переменных окружения!')
+  process.exit(1)
+}
 
 // Create bot instance
 const bot = new Telegraf(BOT_TOKEN)
@@ -260,18 +266,31 @@ bot.catch((err, ctx) => {
 // Start bot and scheduler
 async function start() {
   try {
+    console.log('🚀 Запуск бота...')
+    console.log('📊 Переменные окружения:')
+    console.log(`   BOT_TOKEN: ${BOT_TOKEN ? '✅ Установлен' : '❌ Не установлен'}`)
+    console.log(`   WEBAPP_URL: ${WEBAPP_URL}`)
+    console.log(`   API_BASE_URL: ${API_BASE_URL}`)
+    
     // Start scheduler for user warming
     schedulerService.start()
+    console.log('⏰ Scheduler запущен')
     
     // Start bot
     await bot.launch()
-    console.log('🤖 Bot started successfully')
+    console.log('🤖 Bot успешно запущен!')
     
     // Graceful shutdown
-    process.once('SIGINT', () => bot.stop('SIGINT'))
-    process.once('SIGTERM', () => bot.stop('SIGTERM'))
+    process.once('SIGINT', () => {
+      console.log('🛑 Получен SIGINT, завершаем работу...')
+      bot.stop('SIGINT')
+    })
+    process.once('SIGTERM', () => {
+      console.log('🛑 Получен SIGTERM, завершаем работу...')
+      bot.stop('SIGTERM')
+    })
   } catch (error) {
-    console.error('Failed to start bot:', error)
+    console.error('❌ Ошибка при запуске бота:', error)
     process.exit(1)
   }
 }

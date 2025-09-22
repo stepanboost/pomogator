@@ -5,8 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
+    "dev:simple": "tsx watch src/index.simple.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "build:simple": "tsc src/index.simple.ts --outDir dist",
+    "start": "node dist/index.js",
+    "start:simple": "node dist/index.simple.js"
   },
   "dependencies": {
     "telegraf": "^4.15.6",
