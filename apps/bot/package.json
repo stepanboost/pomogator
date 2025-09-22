@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "dev:simple": "tsx watch src/index.simple.ts",
+    "dev:test": "tsx watch src/index.test.ts",
     "build": "tsc",
     "build:simple": "tsc src/index.simple.ts --outDir dist",
+    "build:test": "tsc src/index.test.ts --outDir dist",
     "start": "node dist/index.js",
-    "start:simple": "node dist/index.simple.js"
+    "start:simple": "node dist/index.simple.js",
+    "start:test": "node dist/index.test.js"
   },
   "dependencies": {
     "telegraf": "^4.15.6",
